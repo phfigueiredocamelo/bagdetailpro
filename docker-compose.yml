@@ -1,0 +1,33 @@
+version: '3.9'
+services:
+
+  joomla:
+    build: .
+    restart: always
+    links:
+      - bagdetailprodb
+    ports:
+      - 80:80
+    environment:
+      JOOMLA_DB_NAME: bagdetailpro_db
+      JOOMLA_DB_HOST: bagdetailprodb
+      JOOMLA_DB_USER: root
+      JOOMLA_DB_PASSWORD: root
+    volumes:
+      - '/c/Users/paull/bagdetailpro/joomla_data:/var/www/html'
+    depends_on:
+      - bagdetailprodb
+
+  bagdetailprodb:
+    image: mysql:8.0.31
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+    volumes:
+      - '/c/Users/paull/bagdetailpro/mysql_data:/var/lib/mysql'
+
+volumes:
+  - mysql_data
+  - joomla_data
