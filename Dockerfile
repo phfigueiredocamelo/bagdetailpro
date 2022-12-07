@@ -149,9 +149,6 @@ RUN set -eux; \
 
 VOLUME /var/www/html
 
-COPY joomla /usr/src/joomla
-RUN set -ex; chown -R www-data:www-data /var/www/html; chown -R www-data:www-data /usr/src/joomla
-
 # Copy init scripts
 ADD docker-entrypoint.sh /entrypoint.sh
 COPY makedb.php /makedb.php

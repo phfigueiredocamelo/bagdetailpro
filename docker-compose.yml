@@ -29,5 +29,5 @@ services:
       - '/c/Users/paull/bagdetailpro/mysql_data:/var/lib/mysql'
 
 volumes:
-  - mysql_data
-  - joomla_data
+  mysql_data:
+  joomla_data:
